@@ -52,7 +52,7 @@
             <label for="password">Password</label>
             <input type="password" id="password">
 
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
 
         </form>
         <p>Error...</p>
@@ -71,6 +71,13 @@
     <script>
 
         var users = []
+
+        users[0] = { name: 'Ji Rafa', email: 'ji@rafa.com', username: 'jirafa', password: '123123123' }
+        users[1] = { name: 'Ele Fante', email: 'ele@fante.com', username: 'elefante', password: '123123123' }
+        users[2] = { name: 'Coco Drilo', email: 'coco@drilo.com', username: 'cocodrilo', password: '123123123' }
+        users[3] = { name: 'Le On', email: 'le@on.com', username: 'leon', password: '123123123' }
+
+
 
         var sections = document.querySelectorAll('section')
 
@@ -141,6 +148,16 @@
             var username = registerFormUsernameInput.value
             var password = registerFormPasswordInput.value
 
+            var user = users.find(function (user) {
+                return user.email === email || user.username === username
+            })
+
+            if (user !== undefined) {
+                alert('user already exists')
+
+                return
+            }
+
             var user = {}
             user.name = name
             user.email = email
@@ -153,11 +170,35 @@
 
             registerSection.style.display = 'none'
             loginSection.style.display = ''
-
-
         })
 
+        var loginForm = loginSection.querySelector('form')
 
+        loginForm.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            var loginFormInputs = loginForm.querySelectorAll('input')
+
+            var loginFormUsernameInput = loginFormInputs[0]
+            var loginFormPasswordInput = loginFormInputs[1]
+
+            var username = loginFormUsernameInput.value
+            var password = loginFormPasswordInput.value
+
+            var user = users.find(function (user) {
+                return user.username === username && user.password === password
+            })
+
+            if (user === undefined) {
+                alert('wrong credentials')
+
+                return
+            }
+
+            loginSection.style.display = 'none'
+            homeSection.style.display = ''
+
+        })
 
     </script>
 </body>
