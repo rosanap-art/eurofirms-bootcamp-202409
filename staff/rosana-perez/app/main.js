@@ -1,9 +1,6 @@
-var users = []
+// business (logic)
 
-users[0] = { name: 'Ji Rafa', email: 'ji@rafa.com', username: 'jirafa', password: '123123123' }
-users[1] = { name: 'Ele Fante', email: 'ele@fante.com', username: 'elefante', password: '123123123' }
-users[2] = { name: 'Coco Drilo', email: 'coco@drilo.com', username: 'cocodrilo', password: '123123123' }
-users[3] = { name: 'Le On', email: 'le@on.com', username: 'leon', password: '123123123' }
+// presentation
 
 var sections = document.querySelectorAll('section')
 
@@ -74,33 +71,25 @@ registerForm.addEventListener('submit', function (event) {
     var username = registerFormUsernameInput.value
     var password = registerFormPasswordInput.value
 
-    var user = users.find(function (user) {
-        return user.email === email || user.username === username
-    })
 
     var feedback = registerSection.querySelector('p')
 
-    if (user !== undefined) {
-        //alert('user already exists')
-        feedback.innerText = 'user already exists'
+    try {
+        registerUser(name, email, username, password)
 
-        return
+        registerForm.reset()
+        feedback.innerText = ''
+
+        registerSection.style.display = 'none'
+        loginSection.style.display = ''
+    } catch (error) {
+        feedback.innerText = error.message
+
+        console.error(error)
     }
 
-    var user = {}
-    user.name = name
-    user.email = email
-    user.username = username
-    user.password = password
-
-    users.push(user)
-
-    registerForm.reset() //limpia formulario registro
-    feedback.innerText = '' // oculta error 'user already exists'
-
-    registerSection.style.display = 'none'
-    loginSection.style.display = ''
 })
+
 
 var loginForm = loginSection.querySelector('form')
 
@@ -115,28 +104,24 @@ loginForm.addEventListener('submit', function (event) {
     var username = loginFormUsernameInput.value
     var password = loginFormPasswordInput.value
 
-    var user = users.find(function (user) {
-        return user.username === username && user.password === password
-    })
-
     var feedback = loginSection.querySelector('p')
 
-    if (user === undefined) {
-        //alert('wrong credentials')
-        feedback.innerText = 'wrong credentials'
+    try {
+        var user = authenticateUser(username, password)
 
-        return
+        loginForm.reset()
+        feedback.innerText = ''
+
+        loginSection.style.display = 'none'
+        homeSection.style.display = ''
+
+        var userTitle = homeSection.querySelector('h3')
+        userTitle.innerText = 'Hello, ' + user.name + '!'
+    } catch (error) {
+        feedback.innerText = error.message
+
+        console.error(error)
     }
-
-    loginForm.reset()
-    feedback.innerText = ''
-
-    loginSection.style.display = 'none'
-    homeSection.style.display = ''
-
-    var userTitle = homeSection.querySelector('h3')
-    userTitle.innerText = 'Hello, ' + user.name + '!' // codigo para insertar el nombre de usuario en el Home después del login
-
 })
 
 var logoutButton = homeSection.querySelector('button')
