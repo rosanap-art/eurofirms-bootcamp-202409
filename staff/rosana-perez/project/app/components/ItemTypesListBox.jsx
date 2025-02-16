@@ -5,7 +5,7 @@ function ItemTypesListBox() {
     const [formData, setFormData] = useState({ type: 'Clothing' })
 
     const handleChange = (selectedValue) => {
-        // Update the state with the new location
+        // Update the state with the new type
         setFormData((prevState) => ({
             ...prevState,
             type: selectedValue,
@@ -14,65 +14,68 @@ function ItemTypesListBox() {
 
     return (
 
-        <Listbox as="div" name="type" defaultValue="Clothing"
+        <Listbox as="div" name="type" defaultValue="clothing"
             id="type"
             value={formData.type}
             onChange={handleChange}>
-            <ListboxOption value="FashionAcc">
+            <ListboxOption value="accesories">
                 <ListboxLabel>Fashion Accesories</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Toys">
+            <ListboxOption value="toys">
                 <ListboxLabel>Toys</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Art">
+            <ListboxOption value="art">
                 <ListboxLabel>Art</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Books">
+            <ListboxOption value="books">
                 <ListboxLabel>Books</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="GamingAndEntertainment">
+            <ListboxOption value="entertainment">
                 <ListboxLabel>Gaming & Entertainment</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="ElectronicDevices">
+            <ListboxOption value="media">
+                <ListboxLabel>Media Devices</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="tech">
                 <ListboxLabel>Electronic Devices</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Collecting">
-                <ListboxLabel>Collecting</ListboxLabel>
+            <ListboxOption value="collectables">
+                <ListboxLabel>Collectables</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="SportsAndLeisure">
+            <ListboxOption value="sports">
                 <ListboxLabel>Sports & Leisure</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="SocialAndCompanionship">
+            <ListboxOption value="social">
                 <ListboxLabel>Social & Companionship</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Home Furniture">
-                <ListboxLabel>Home Furniture</ListboxLabel>
-            </ListboxOption>
-            <ListboxOption value="HomeAppliances">
-                <ListboxLabel>Home Appliances</ListboxLabel>
-            </ListboxOption>
-            <ListboxOption value="Gardening">
-                <ListboxLabel>Gardening</ListboxLabel>
-            </ListboxOption>
-            <ListboxOption value="FarmingAndHorticulture">
-                <ListboxLabel>Farming & Horticulture</ListboxLabel>
-            </ListboxOption>
-            <ListboxOption value="HomeAssistance">
+            <ListboxOption value="homeAssistance">
                 <ListboxLabel>Home Assistance</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Education">
-                <ListboxLabel>Education</ListboxLabel>
+            <ListboxOption value="lessons">
+                <ListboxLabel>Education & Lessons</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="FreeHomeSupport">
+            <ListboxOption value="homeSupport">
                 <ListboxLabel>Free Home Support</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="FreeFinanceSupport">
+            <ListboxOption value="furniture">
+                <ListboxLabel>Home Furniture</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="appliances">
+                <ListboxLabel>Electrical Appliances</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="gardening">
+                <ListboxLabel>Gardening</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="farming">
+                <ListboxLabel>Farming & Horticulture</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="finance">
                 <ListboxLabel>Free Finance Support</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Business">
+            <ListboxOption value="business">
                 <ListboxLabel>Business Equipment & Furniture</ListboxLabel>
             </ListboxOption>
-            <ListboxOption value="Construction">
+            <ListboxOption value="construction">
                 <ListboxLabel>Construction Materials & Tools</ListboxLabel>
             </ListboxOption>
         </Listbox>

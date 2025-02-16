@@ -3,6 +3,7 @@ import createItem from './createItem.js'
 import deleteItem from './deleteItem.js'
 import editItem from './editItem.js'
 import editUserData from './editUserData.js'
+import getItemsByType from './getItemsByType.js'
 import getChat from './getChat.js'
 import getChats from './getChats.js'
 import getFavItems from './getFavItems.js'
@@ -23,6 +24,7 @@ const logic = {
     deleteItem,
     editItem,
     editUserData,
+    getItemsByType,
     getChat,
     getChats,
     getFavItems,

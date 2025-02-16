@@ -9,6 +9,7 @@ import getItem from './getItem'
 import getItems from './getItems'
 import getItemsAsGuest from './getItemsAsGuest'
 import getItemsFromUser from './getItemsFromUser'
+import getItemsByType from './getItemsByType'
 import getLoggedInUserId from './getLogggedInUserId'
 import getUser from './getUser'
 import getUserId from './getUserId'
@@ -33,6 +34,7 @@ const logic = {
     getItems,
     getItemsAsGuest,
     getItemsFromUser,
+    getItemsByType,
     getLoggedInUserId,
     getUser,
     getUserId,

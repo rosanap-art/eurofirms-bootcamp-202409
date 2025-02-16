@@ -15,7 +15,7 @@ import getLoggedInUserId from '../logic/getLogggedInUserId'
 import getUserName from '../logic/getUserName'
 import logoutUser from '../logic/logoutUser'
 
-function Header() {
+function Header({ onLoggedOut }) {
 
     const [loggedUserId, setLoggedUserId] = useState(null)
     const [userName, setUserName] = useState(null)
@@ -56,8 +56,13 @@ function Header() {
     const handleLogoutClick = () => {
         try {
             logoutUser()
-                .then(() => navigate("/welcome"))
-                .catch(error => handleError(error))
+            onLoggedOut()
+            /* navigate("/welcome") */
+            /*  .then(() =>
+                
+                
+            )
+            .catch(error => handleError(error))  */
 
         } catch (error) { handleError(error) }
     }

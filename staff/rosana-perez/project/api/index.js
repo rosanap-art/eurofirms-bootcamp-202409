@@ -218,6 +218,20 @@ mongoose.connect(MONGO_URL)
                 handleError(res, error)
             }
         })
+        //get items by type
+        api.get('/items/type/:type', (req, res) => {
+            try {
+                const userId = req.headers.authorization && verifyToken(req)
+
+                const type = req.params.type
+
+                logic.getItemsByType(userId, type)
+                    .then(items => res.json(items))
+                    .catch(error => handleError(res, error))
+            } catch (error) {
+                handleError(res, error)
+            }
+        })
         //edit an item title
         api.patch('/items/:itemId', jsonBodyParser, (req, res) => {
             try {

@@ -28,7 +28,7 @@ function App() {
                         <Route path="/itemsAsGuest" element={<ItemsAsGuest />} />
                         <Route path="/login" element={!userLoggedIn ? <Login onLoggedIn={handleLoggedIn} /> : <Navigate to='/' />} />
                         <Route path="/register" element={<Register />} />
-                        <Route path="/*" element={userLoggedIn ? <Home /> : <Navigate to="/welcome" />} />
+                        <Route path="/*" element={userLoggedIn ? <Home onLoggedOut={handleLoggedIn} /> : <Navigate to="/welcome" />} />
                     </Routes>
                 </div>
             </>

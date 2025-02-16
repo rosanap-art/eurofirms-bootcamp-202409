@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
-
 import { Routes, Route } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 import ItemsList from '../components/ItemsList'
 import Header from '../components/Header'
@@ -11,7 +10,10 @@ import Item from '../components/Item'
 import Message from '../components/Message'
 import OwnItem from '../components/OwnItem'
 import LocationListBox from '../components/LocationListBox'
-import { Button } from '../components/button.jsx'
+import ItemTypesListBox from '../components/ItemTypesListBox'
+import { Field, FieldGroup, Fieldset, Label } from '../components/fieldset'
+import { Button } from '../components/button'
+
 
 import CreateItem from './CreateItem'
 import FavItems from './FavItems'
@@ -21,13 +23,18 @@ import UserProfile from './UserProfile'
 import MyItems from './MyItems'
 import Article from './Article'
 
-function Home() {
+
+function Home({ onLoggedOut }) {
     console.log('Home rendering')
+
+    const handleOnLoggedOut = () => {
+        onLoggedOut()
+    }
 
     return (
         <>
             <header>
-                <Header />
+                <Header onLoggedOut={handleOnLoggedOut} />
             </header>
             <main>
                 <Routes>
@@ -48,6 +55,25 @@ function Home() {
                     <Route path="/message" element={<Message />} />
                 </Routes>
             </main >
+            <footer className="w-full">
+                <form className="w-full flex justify-between items-center px-2 h-24 z-10">
+                    <div className="input-with-select w-full">
+                        <Fieldset>
+                            <FieldGroup>
+                                <Field>
+
+                                    <Label htmlFor="type" name="type">Type</Label>
+                                    <ItemTypesListBox />
+
+                                </Field>
+                            </FieldGroup>
+                        </Fieldset>
+                    </div>
+                    <Button color="emerald-500" className="my-6 text-xs text-emerald-800 font-bold" type="submit">
+                        <MagnifyingGlassIcon />
+                    </Button>
+                </form >
+            </footer >
         </>
     )
 }
